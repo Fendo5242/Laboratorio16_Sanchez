@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:Laboratorio16_Sanchez.ViewModels"
+             x:Class="Laboratorio16_Sanchez.Views.ComidaPage">
+    <ContentPage.BindingContext>
+        <vm:ComidaViewModel/>
+    </ContentPage.BindingContext>
+
+    <StackLayout Padding="10">
+        <Label Text="Listado de Comidas" FontSize="Large" HorizontalOptions="Center"/>
+
+        <CollectionView ItemsSource="{Binding Listings}" SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="10" Margin="5" CornerRadius="10" BorderColor="#ccc">
+                        <StackLayout Orientation="Vertical">
+                            <Image Source="{Binding Imagen}" Aspect="AspectFill" HeightRequest="200"/>
+                            <Label Text="{Binding Nombre}" FontAttributes="Bold"/>
+                            <Label Text="{Binding Precio}" Opacity="0.6"/>
+                        </StackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+       <Frame Padding="0"
+       HasShadow="True"
+       CornerRadius="20"
+       BorderColor="#444444"
+       BackgroundColor="#f22222"
+       HorizontalOptions="Center"
+       VerticalOptions="Center"
+       Margin="10">
+            <Button Text="Cargar Comidas"
+            Command="{Binding LoadListingsCommand}"
+            BackgroundColor="Transparent"
+            TextColor="White"
+            FontAttributes="Bold"
+            CornerRadius="20"
+            FontSize="Medium">
+            </Button>
+        </Frame>
+    </StackLayout>
+</ContentPage>
